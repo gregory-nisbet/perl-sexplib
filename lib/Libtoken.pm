@@ -81,7 +81,7 @@ sub error_read_from_broken_stream {
 
 
 # pattern_end_position(string => ..., offset =>, pattern =>)
-# returns index of end of pattern or -1 if the pattern does not
+# returns index of end of pattern or undef if the pattern does not
 # start at offset.
 sub pattern_end_position {
     my %arg = @_;
@@ -96,7 +96,7 @@ sub pattern_end_position {
         my $last = $+[0];
         return $last;
     } else {
-        return -1;
+        return undef;
     }
 }
 
