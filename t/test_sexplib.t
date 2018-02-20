@@ -2,10 +2,10 @@
 use strict;
 use warnings;
 use Test;
-use Sexplib qw[parse_comment parse_string];
+use Sexplib qw[parse_comment parse_string parse_identifier];
 
 BEGIN {
-    plan(tests => 7);
+    plan(tests => 8);
 }
 
 # single character comment
@@ -27,4 +27,7 @@ ok(parse_string(q[""], 0), 2);
 ok(parse_string('"\"', 0), undef);
 
 # string with escaped backslash is string
-ok(parse_string('"\\"', 4), undef);
+ok(parse_string('"\\"', 0), undef);
+
+# 'a' is identifier
+ok(parse_identifier('a', 0), 1);
